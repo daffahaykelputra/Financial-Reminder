@@ -1,3 +1,3 @@
-# financial_reminder
+# FINANCIAL REMINDER
 
-A new Flutter project.
+Tahap Perkembangan
