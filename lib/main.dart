@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Berguna agar pita merah tulisan debug menjadi hilang
       debugShowCheckedModeBanner: false,
       home: FinancialReminder(),
     );
@@ -23,8 +24,9 @@ class FinancialReminder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // berguna untuk memberi warna gradient pada latar belakang di body
+      // Stack berguna agar isi konten bisa bertumpuk dalam satu widget
       body: Stack(
+        // Children mewakili dari pada widget2 konten yang akan ditampilkan
         children: [
           Container(
             decoration: BoxDecoration(
@@ -38,7 +40,6 @@ class FinancialReminder extends StatelessWidget {
               ),
             ),
           ),
-          // memberikan object berupa lingkaran
           Positioned(
             top: -100,
             right: -100,
@@ -59,7 +60,6 @@ class FinancialReminder extends StatelessWidget {
               ),
             ),
           ),
-          // memberikan object berupa lingkaran
           Positioned(
             bottom: -150,
             left: -150,
@@ -80,7 +80,6 @@ class FinancialReminder extends StatelessWidget {
               ),
             ),
           ),
-          // berguna untuk membuat text Financial menjadi berada di tengah
           Center(
             child: Column(
               children: [
@@ -93,6 +92,13 @@ class FinancialReminder extends StatelessWidget {
                           height: 6.5,
                           fontWeight: FontWeight.bold,
                           fontSize: 50,
+                          shadows: <Shadow>[
+                            Shadow(
+                              offset: Offset(5, 5),
+                              blurRadius: 80,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ],
                           foreground: Paint()
                             ..shader = LinearGradient(
                               colors: [
@@ -109,7 +115,6 @@ class FinancialReminder extends StatelessWidget {
                     ),
                   ),
                 ),
-                // berguna agar bisa mengatur posisi text secara leluasa
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
@@ -123,31 +128,39 @@ class FinancialReminder extends StatelessWidget {
                         fontWeight: FontWeight.normal,
                         fontSize: 28,
                         color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(5, 5),
+                            blurRadius: 80,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                // berguna agar bisa mengatur posisi text secara leluasa
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 7,
-                    ),
-                    child: Text(
+                SizedBox(height: 140),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
                       "Don't have an account?",
                       style: TextStyle(
-                        height: 16.3,
+                        height: 5,
                         fontWeight: FontWeight.normal,
                         fontSize: 15,
                         color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            blurRadius: 40,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            offset: Offset(5, 5),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                // berguna memberi jarak antara 2 konten
-                SizedBox(height: 1),
-                // berguna untuk membuat tombol sign up
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -157,8 +170,8 @@ class FinancialReminder extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     padding: EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 1,
+                      horizontal: 50,
+                      vertical: 10,
                     ),
                   ),
                   child: Ink(
@@ -174,8 +187,8 @@ class FinancialReminder extends StatelessWidget {
                         BoxShadow(
                           color: Colors.black.withOpacity(0.3),
                           spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(1, 2),
+                          blurRadius: 4,
+                          offset: Offset(3, 6),
                         ),
                       ],
                     ),
@@ -195,24 +208,30 @@ class FinancialReminder extends StatelessWidget {
                     ),
                   ),
                 ),
-                // berguna agar dalam 1 widget bisa menggunakan banyak text secara kebawah
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Already have an account?",
                       style: TextStyle(
-                        height: 4,
+                        height: 4.5,
                         fontWeight: FontWeight.normal,
                         fontSize: 15,
                         color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            blurRadius: 40,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            offset: Offset(5, 5),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(width: 5),
                     Text(
                       "Log in",
                       style: TextStyle(
-                        height: 4,
+                        height: 4.5,
                         fontWeight: FontWeight.normal,
                         fontSize: 15,
                         color: Colors.blue,
